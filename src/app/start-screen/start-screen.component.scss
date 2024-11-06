@@ -1,0 +1,8 @@
+@import '../shared/mixins/_shared-mixins.scss';
+
+section {
+    @include flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: grey;
+}

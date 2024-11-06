@@ -1,0 +1,8 @@
+@import '../../shared/mixins/_shared-mixins.scss';
+
+span {
+    @include flex;
+    width: 200px;
+    height: 50px;
+    background-color: orange;
+}

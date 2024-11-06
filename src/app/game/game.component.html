@@ -1,0 +1,25 @@
+
+@for (player of game.players; let i = $index; track player) {
+    <app-player [playerName]="player" class="playerBar" [ngStyle]="{'top.px': 60 * i}"></app-player>
+}
+<section>  
+    <div class="stack">
+        @for (count of [0,1,2,3,4,5]; let i = $index; track count) {
+            @if (i === 0) {
+                <img class="top-card" (click)="drawCard()" src="../../assets/img/cards/card_cover.png">
+                @if(cardDrawn){
+                    <img class="card-drawn" src="../../assets/img/cards/{{ currentCard }}.png">
+                } 
+            } @else {
+                <img [ngStyle]="{'margin-left.px': 5 * count}" src='../../assets/img/cards/card_cover.png'>
+            }
+        }
+
+        @for (card of game.playedCards; track card) {
+            <img class="card-drawn" src="../../assets/img/cards/{{ card }}.png">
+        }
+    </div>
+</section>
+<button mat-fab class="button-add" (click)="openDialog()">
+    <mat-icon>add</mat-icon>
+</button>

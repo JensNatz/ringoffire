@@ -1,0 +1,57 @@
+@import '../shared/mixins/_shared-mixins.scss';
+
+section {
+    @include flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(214, 181, 181);
+}
+
+.playerBar {
+    position: absolute;
+    right: 0;
+}
+
+.stack {
+    > img {
+        position: absolute;
+        width: 120px;
+        height: auto;
+    }
+}
+
+.top-card {
+    margin-left: -150px;
+
+    transition: all 100ms ease-in-out;
+
+    &:hover{
+        transform: scale(1.02);
+    }
+}
+
+.card-drawn {
+    margin-left: -150px;
+    animation: draw-card-animation 1s ease-in-out;
+    transform: scale(1.0) translateX(150px) translateY(-190px);
+}
+
+@keyframes draw-card-animation {
+    0% {
+        transform: scale(1.0);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1.0) translateX(150px) translateY(-190px);
+    }
+}
+
+.button-add {
+    position: absolute;
+    bottom: 32px;
+    right: 32px
+}
