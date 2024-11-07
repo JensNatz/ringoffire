@@ -2,16 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Game } from '../../models/game';
 import { PlayerComponent } from './player/player.component';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
-import { DialogComponent } from './dialog/dialog.component';
+// import { MatIconModule } from '@angular/material/icon';
+// import { MatButtonModule } from '@angular/material/button';
+
 
 
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [CommonModule, PlayerComponent, MatButtonModule, MatIconModule, MatDialogModule, DialogComponent],
+  imports: [
+    CommonModule, 
+    PlayerComponent, 
+    // MatButtonModule,
+    // MatIconModule
+  ],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss'
 })
@@ -20,7 +24,6 @@ export class GameComponent implements OnInit {
   cardDrawn = false;
   currentCard!: string;
 
-  constructor(private dialog: MatDialogModule) {}
 
   ngOnInit(): void {
     this.newGame();
@@ -45,15 +48,6 @@ export class GameComponent implements OnInit {
   newGame() {
     this.game = new Game;
 
-  }
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogComponent);
-
-    dialogRef.afterClosed().subscribe(() => {
-      console.log('The dialog was closed');
-
-    });
   }
 
 }
