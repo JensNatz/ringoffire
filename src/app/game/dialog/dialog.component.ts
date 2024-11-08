@@ -1,16 +1,41 @@
-import { Component } from '@angular/core';
-
+import {Component, inject} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field'; 
+import { MatInputModule } from '@angular/material/input';
+import {
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogRef,
+  MatDialogModule
+} from '@angular/material/dialog';
 
 
 @Component({
   selector: 'app-dialog',
   standalone: true,
-  template: `<h1 mat-dialog-title>Dialog</h1>
-             <div mat-dialog-content>
-               <p>Dies ist ein Beispiel-Dialog!</p>
-             </div>
-             <div mat-dialog-actions>
-               <button mat-button mat-dialog-close>Schließen</button>
-             </div>`,
+  imports: [
+    MatDialogContent,
+    DialogComponent,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogContent,
+    MatDialogModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule
+  ],
+  templateUrl: './dialog.component.html'
 })
-export class DialogComponent {}
+export class DialogComponent {
+  readonly dialogRef = inject(MatDialogRef<DialogComponent>);
+
+  name: string = '';
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+
